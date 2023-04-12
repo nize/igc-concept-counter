@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<glossary xmlns="http://www.ibm.com/is/bg/importexport"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ibm.com/is/bg/importexport BGSchema.xsd"
+    version="1.6" exportTime="1345985047114">
+
+    <categories>
+
+		<category name="Address Example" shortDescription="Demonstrating Has-A, Is-A, and component derivation."></category>
+
+    </categories>
+
+    <terms>
+
+        <term name="Supplier Address" shortDescription="The business mailing address of an entity contracted to supply goods or services to the corporation." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+                <label name="Project Falcon"/>
+                <label name="Project Platypus"/>
+            </labels>
+            <parentCategory identity="Address Example"/>
+            <hasA>
+				<termRef identity="Address Example::Supplier ID"/>
+			</hasA>
+            <isATypeOf>                
+				<termRef identity="Address Example::Address"/>
+            </isATypeOf>
+			<notes>
+				<note label="Subject to review" comment="Short description is subject to review by Pierre Montalbene" status="OPEN" type="INFORMATIONAL" />
+				<note label="EOL" comment="Q2 2015" status="PENDING" type="ACTION"/>				
+			</notes>        
+		</term>
+
+        <term name="Contact Point" shortDescription="A method of contacting an involved party." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels><label name="Project Platypus"/><label name="Project Falcon"/></labels>
+            <parentCategory identity="Address Example"/>
+            <hasTypes><termRef identity="Address Example::Address"/></hasTypes>
+        </term>
+
+        <term name="Address" shortDescription="Data used to send correspondence or deliveries to customers and other involved parties." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+                <label name="Europe : United Kingdom"/>
+                <label name="Project Platypus"/>
+            </labels>
+            <parentCategory identity="Address Example"/>
+            <hasA>
+                <termRef identity="Address Example::State"/>
+                <termRef identity="Address Example::City"/>
+                <termRef identity="Address Example::Street Name"/>
+            </hasA>
+            <isATypeOf><termRef identity="Address Example::Contact Point"/></isATypeOf>
+            <hasTypes><termRef identity="Address Example::Supplier Address"/></hasTypes>
+        </term>
+
+        <term name="City" shortDescription="Geographic unit below state/province and above street address." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+				<label name="Project Platypus"/>
+				<label name="Project Falcon"/>
+			</labels>
+            <parentCategory identity="Address Example"/>
+            <isOf><termRef identity="Address Example::Address"/></isOf>
+        </term>
+
+        <term name="Supplier ID" shortDescription="Unique identifier of entities contracted to supply goods or services to the corporation." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+                <label name="Project Platypus"/>
+                <label name="Europe : United Kingdom"/>
+                <label name="Europe : Suisse"/>
+            </labels>
+            <parentCategory identity="Address Example"/>
+            <isOf> <termRef identity="Address Example::Supplier Address"/></isOf>
+        </term>
+
+        <term name="Street Name" shortDescription="One componenet of address, usually accompanied by a Street Number." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+                <label name="Project Platypus"/>
+                <label name="Europe : United Kingdom"/>
+                <label name="Europe : Suisse"/>
+            </labels>
+            <parentCategory identity="Address Example"/>
+            <isOf>
+                <termRef identity="Address Example::Address"/>
+            </isOf>
+        </term>
+
+        <term name="State" shortDescription="A geographic unit corresponding to province. Conceptually below country and above city" status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+                <label name="Project Platypus"/>
+                <label name="Project Falcon"/>
+            </labels>
+            <parentCategory identity="Address Example"/>
+            <isOf><termRef identity="Address Example::Address"/></isOf>
+			
+
+		</term>
+
+	</terms>
+
+    <labelDefinitions>
+        <labelDefinition name="Data Quality"/>
+        <labelDefinition name="Data Security"/>
+        <labelDefinition name="Data Privacy"/>
+        <labelDefinition name="Europe : United Kingdom"/>
+        <labelDefinition name="Europe : Suisse"/>
+        <labelDefinition name="PII"/>
+        <labelDefinition name="Project Falcon"/>
+        <labelDefinition name="Project Hawk"/>
+        <labelDefinition name="Project Platypus">
+
+        </labelDefinition>
+        	
+	</labelDefinitions>
+
+    <synonymGroups>
+        <synonymGroup>
+            <synonyms>
+                <termRef identity="Address Example::Supplier Address"/>
+                <termRef identity="Address Example::Address"/>
+            </synonyms>
+        </synonymGroup>
+    </synonymGroups>
+
+</glossary>

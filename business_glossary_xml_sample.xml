@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<glossary xmlns="http://www.ibm.com/is/bg/importexport"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.ibm.com/is/bg/importexport BGSchema.xsd"
+    version="1.6" exportTime="1345985047114">
+
+<!-- =================================================================================== -->     
+<!-- Sample File: IBM InfoSphere Business Glossary XML Import/Export                     -->     
+<!-- =================================================================================== -->    
+
+    <customAttributesDefinitions>
+
+		<!-- Define a custom attribute for TERMs of type TEXT  -->
+		<customAttributeDef name="Related Assets" attributeType="TEXT" multipleValues="false">
+            <appliesTo>
+                <classType value="TERM"/>
+            </appliesTo>
+        </customAttributeDef>
+
+		<!-- Define a custom attribute for TERMs of type PREDEFINED_VALUES -->
+        <customAttributeDef name="External Sources" description="External sources that complement the enterprise definition of this asset." attributeType="PREDEFINED_VALUES" multipleValues="false">
+            <validValues>
+                <validValue value="Cook Book"/>
+                <validValue value="Encyclopaedia"/>
+                <validValue value="Magazine"/>
+            </validValues>
+            <appliesTo>
+                <classType value="TERM"/>
+            </appliesTo>
+        </customAttributeDef>
+
+		<!-- Define a custom attribute for RULESs of type TEXT. Multiple Values can be given  -->
+        <customAttributeDef name="Owner" attributeType="TEXT" multipleValues="true">
+            <appliesTo>
+                <classType value="RULE"/>
+            </appliesTo>
+        </customAttributeDef>
+
+		<!-- Define a custom attribute for POLICY of type DATE  -->
+        <customAttributeDef name="Start Date" attributeType="DATE" multipleValues="false">
+            <appliesTo>
+                <classType value="POLICY"/>
+            </appliesTo>
+        </customAttributeDef>
+
+		<!-- Define a custom attribute for RULEs of type PREDEFINED_VALUES   -->
+        <customAttributeDef name="Subject Matter Expert" attributeType="PREDEFINED_VALUES" multipleValues="false">
+            <validValues>
+                <validValue value="Danny" description="Danny is the chief of info systems"/>
+                <validValue value="Donny" description="Donny is the manager of data systems"/>
+                <validValue value="Denny" description="Denny is the chief caterer"/>
+            </validValues>
+            <appliesTo>
+                <classType value="RULE"/>
+            </appliesTo>
+        </customAttributeDef>
+		
+        <customAttributeDef name="Valid Values" attributeType="TEXT" multipleValues="true">
+            <appliesTo>
+                <classType value="RULE"/>
+            </appliesTo>
+        </customAttributeDef>
+
+	</customAttributesDefinitions>
+
+    <categories>
+
+		<category name="Address Example" shortDescription="Demonstrating Has-A, Is-A, and component derivation."></category>
+
+    </categories>
+
+    <terms>
+
+        <term name="Supplier Address" shortDescription="The business mailing address of an entity contracted to supply goods or services to the corporation." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+                <label name="Project Falcon"/>
+                <label name="Project Platypus"/>
+            </labels>
+            <parentCategory identity="Address Example"/>
+            <hasA>
+				<termRef identity="Address Example::Supplier ID"/>
+			</hasA>
+            <isATypeOf>                
+				<termRef identity="Address Example::Address"/>
+            </isATypeOf>
+			<notes>
+				<note label="Subject to review" comment="Short description is subject to review by Pierre Montalbene" status="OPEN" type="INFORMATIONAL" />
+				<note label="EOL" comment="Q2 2015" status="PENDING" type="ACTION"/>				
+			</notes>        
+		</term>
+
+        <term name="Contact Point" shortDescription="A method of contacting an involved party." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels><label name="Project Platypus"/><label name="Project Falcon"/></labels>
+            <parentCategory identity="Address Example"/>
+            <hasTypes><termRef identity="Address Example::Address"/></hasTypes>
+        </term>
+
+        <term name="Address" shortDescription="Data used to send correspondence or deliveries to customers and other involved parties." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+                <label name="Europe : United Kingdom"/>
+                <label name="Project Platypus"/>
+            </labels>
+            <parentCategory identity="Address Example"/>
+            <hasA>
+                <termRef identity="Address Example::State"/>
+                <termRef identity="Address Example::City"/>
+                <termRef identity="Address Example::Street Name"/>
+            </hasA>
+            <isATypeOf><termRef identity="Address Example::Contact Point"/></isATypeOf>
+            <hasTypes><termRef identity="Address Example::Supplier Address"/></hasTypes>
+        </term>
+
+        <term name="City" shortDescription="Geographic unit below state/province and above street address." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+				<label name="Project Platypus"/>
+				<label name="Project Falcon"/>
+			</labels>
+            <parentCategory identity="Address Example"/>
+            <isOf><termRef identity="Address Example::Address"/></isOf>
+        </term>
+
+        <term name="Supplier ID" shortDescription="Unique identifier of entities contracted to supply goods or services to the corporation." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+                <label name="Project Platypus"/>
+                <label name="Europe : United Kingdom"/>
+                <label name="Europe : Suisse"/>
+            </labels>
+            <parentCategory identity="Address Example"/>
+            <isOf> <termRef identity="Address Example::Supplier Address"/></isOf>
+        </term>
+
+        <term name="Street Name" shortDescription="One componenet of address, usually accompanied by a Street Number." status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+                <label name="Project Platypus"/>
+                <label name="Europe : United Kingdom"/>
+                <label name="Europe : Suisse"/>
+            </labels>
+            <parentCategory identity="Address Example"/>
+            <isOf>
+                <termRef identity="Address Example::Address"/>
+            </isOf>
+        </term>
+
+        <term name="State" shortDescription="A geographic unit corresponding to province. Conceptually below country and above city" status="CANDIDATE" type="NONE" isModifier="false">
+            <labels>
+                <label name="Project Platypus"/>
+                <label name="Project Falcon"/>
+            </labels>
+            <parentCategory identity="Address Example"/>
+            <isOf><termRef identity="Address Example::Address"/></isOf>
+
+		   <assignedAssets>
+
+			<!-- The XML importer ignores references to assets that are not present in the repository, 
+			such as the assigned assets defined in the following section. When identifying an 
+			assigned asset, the file must specify all of the relevant attributes that are defined 
+			for it in the repository unless it is a reference to an external asset.
+
+			For example,  if the file specifies that column "CUSTOMER_NAME" is assigned to a term, 
+			and the attributes "databaseDBMS," "databaseInstance," and "databasePath" are already 
+			populated for the containing database of this column in the metadata repository, 
+			then the XML file must specify the "databaseDBMS," "databaseInstance," and 
+			"databasePath" attributes in addition to the "databaseName" attribute. -->
+
+				<databaseRef host="Server1" databaseName="XMETA" />
+				<columnRef 
+					column="CUSTOMER_NAME" 
+					table="CUSTOMER" 
+					schema="DB1_SC" 
+					databaseName="DB_1" 
+					databaseDBMS="DB2" 
+					databaseInstance="DBinstance" 
+					databasePath="DBpath" 
+					host="Server1" />
+
+				<BIReportRef report="Annual Report">
+                    <BIFolderRef name="My Reports">
+                        <BIFolderRef name="EWS">
+                            <BIFolderRef name="Public Folder">
+                                <BIServerRef name="BI Server"/>
+                            </BIFolderRef>
+                        </BIFolderRef>
+                    </BIFolderRef>
+  				</BIReportRef>
+  				
+				<termRef identity="Category2::Term2" />
+				<categoryRef identity="Category2" />
+
+			</assignedAssets>
+			
+			<assetCollections>
+				<!-- The XML importer ignores references to collections that are not present in the repository. 
+				 XML import will not affect collection permissions -->
+				
+                <assetCollection
+                    rid="6662c0f2.fbf2418e.b8k47gsig.nch4b9n.qlcshq.sj6bqcneltk1nvhin8do4" identity="SubCollection"/>
+                <assetCollection
+                    rid="6662c0f2.fbf2418e.b8k47gmpt.3jld03c.jovt7e.pvdlh3s9leaosirovimb0" identity="MyFirstCollection"/>
+            </assetCollections>
+			
+
+		</term>
+
+	</terms>
+
+    <policies>
+        <policy name="Customer Information"
+            shortDescription="Ensure [http://ibm.com|customer] information complies with corporate [http://ibm.com|information governance standards] with special emphasis on quality, security, and privacy." 
+			longDescription="There are 2 interesting rules referenced by this policy: &quot;Required Fields For Customer Profile‬&quot; and &quot; ‪Restrict Customer Financial Data to Accounts Under Level 7G‬&quot;">
+            <customAttributes>
+                <customAttributeValue customAttribute="Start Date">
+                    <attributeValue value="2014-01-01T00:00:00"/>
+                </customAttributeValue>
+            </customAttributes>
+            <labels>
+                <label name="PII"/>
+                <label name="Data Quality"/>
+                <label name="Data Security"/>
+                <label name="Data Privacy"/>
+            </labels>
+            <referencedRules>
+                <ruleRef identity="Required Fields For Customer Profile"/>
+                <ruleRef identity="Restrict Customer Financial Data to Accounts Under Level 7G"/>
+            </referencedRules>
+        </policy>
+    </policies>
+
+    <rules>
+
+		<!-- For the best illustration of the relationship 
+		from information governance rules to technical assets 
+		(Governs and Implemented By relationships), 
+		create the following external asset types before importing this file: 
+		Data Quality Rule, Database, Database Table, Security Routine -->
+
+		<rule
+            name="Restrict Customer Financial Data to Accounts Under Level 7G" 
+			shortDescription="Access for dev, test, or production, across users and services requires [http://ibm.com|authorization regime factor] [http://ibm.com|Level 7G] or higher. ">
+            <labels>
+                <label name="PII"/>
+                <label name="Data Security"/>
+            </labels>
+            <referencedByPolicies><policyRef identity="Customer Information"/></referencedByPolicies>
+            <relatedRules><ruleRef identity="Required Fields For Customer Profile"/></relatedRules>
+            <typedAssignedAssets>
+	            <assignedAssets assignmentType="IMPLEMENTED_BY">
+	                <externalAssetReferenceRef name="Financial Data Control" type="Security Routine" url="http://security-app/2342"/>
+	            </assignedAssets>
+	            <assignedAssets assignmentType="GOVERNS">
+	                <externalAssetReferenceRef name="CUST_DATA_DB_BAK" type="Database"/>
+	                <externalAssetReferenceRef name="CUST_DATA_DB" type="Database"/>
+	            </assignedAssets>
+            </typedAssignedAssets>
+        </rule>
+
+        <rule name="Required Fields For Customer Profile" shortDescription="All customer profiles must contain populated values across key fields." >
+            <customAttributes>
+                <customAttributeValue customAttribute="Owner">
+                    <attributeValue value="James Karl Smith, Jr."/>
+                    <attributeValue value="Smitty James Karl, PhD"/>
+                    <attributeValue value="Karl Smithe-James III"/>
+                </customAttributeValue>
+                <customAttributeValue customAttribute="Subject Matter Expert">
+                    <attributeValue value="Danny"/>
+                </customAttributeValue>
+            </customAttributes>
+            <labels>
+                <label name="PII"/>
+                <label name="Data Quality"/>
+            </labels>
+            <referencedByPolicies><policyRef identity="Customer Information"/></referencedByPolicies>
+            <typedAssignedAssets>
+	            <assignedAssets assignmentType="IMPLEMENTED_BY">
+	                <externalAssetReferenceRef  name="Customer Profile Required Fields" type="Data Quality Rule" url="http://data-quality-app/32423"/>
+	            </assignedAssets>
+	            <assignedAssets assignmentType="GOVERNS">
+	                <externalAssetReferenceRef name="CUST_PROFILE" type="Database Table" url="http://asset-repository/234908"/>
+	                <externalAssetReferenceRef name="CUST_HIST" type="Database Table" url="http://asset-repository/09234"/>
+	            </assignedAssets>
+            </typedAssignedAssets>
+        </rule>
+
+	</rules>
+
+    <labelDefinitions>
+        <labelDefinition name="Data Quality"/>
+        <labelDefinition name="Data Security"/>
+        <labelDefinition name="Data Privacy"/>
+        <labelDefinition name="Europe : United Kingdom"/>
+        <labelDefinition name="Europe : Suisse"/>
+        <labelDefinition name="PII"/>
+        <labelDefinition name="Project Falcon"/>
+        <labelDefinition name="Project Hawk"/>
+        <labelDefinition name="Project Platypus">
+        	<labeledAssets>
+
+			<!-- The XML importer ignores references to assets that are not present in the repository, 
+			such as the labeled assets defined in the following section. When identifying an 
+			labeled asset, the file must specify all of the relevant attributes that are defined 
+			for it in the repository unless it is a reference to an external asset.
+
+			For example,  if the file specifies that column "CUSTOMER_NAME" is assigned to a term, 
+			and the attributes "databaseDBMS," "databaseInstance," and "databasePath" are already 
+			populated for the containing database of this column in the metadata repository, 
+			then the XML file must specify the "databaseDBMS," "databaseInstance," and 
+			"databasePath" attributes in addition to the "databaseName" attribute. -->
+
+				<databaseRef host="Server1" databaseName="XMETA" />
+				<columnRef 
+					column="CUSTOMER_NAME" 
+					table="CUSTOMER" 
+					schema="DB1_SC" 
+					databaseName="DB_1" 
+					databaseDBMS="DB2" 
+					databaseInstance="DBinstance" 
+					databasePath="DBpath" 
+					host="Server1" />
+
+				<BIReportRef report="Annual Report">
+                    <BIFolderRef name="My Reports">
+                        <BIFolderRef name="EWS">
+                            <BIFolderRef name="Public Folder">
+                                <BIServerRef name="BI Server"/>
+                            </BIFolderRef>
+                        </BIFolderRef>
+                    </BIFolderRef>
+  				</BIReportRef>
+			 <!-- Please note that labeledAssets can't contain any references to glossary assets
+			      like terms and categories. Even if they are included by editing the xml file, 
+			      they will be ignored during import  -->
+			 
+			</labeledAssets>
+        </labelDefinition>
+        	
+	</labelDefinitions>
+
+    <synonymGroups>
+        <synonymGroup>
+            <synonyms>
+                <termRef identity="Address Example::Supplier Address"/>
+                <termRef identity="Address Example::Address"/>
+            </synonyms>
+        </synonymGroup>
+    </synonymGroups>
+
+</glossary>
+
+<!-- ==============================================================================   -->
+<!-- IBM InfoSphere Business Glossary                                                 -->
+<!-- Copyright IBM Corp. 2007, 2017 All rights reserved.                              -->
+<!--                                                                                  -->
+<!--* The following sample of source code ("Sample") is owned by International        -->
+<!--* Business Machines Corporation or one of its subsidiaries ("IBM") and is         -->
+<!--* copyrighted and licensed, not sold. You may use, copy, modify, and              -->
+<!--* distribute the Sample in any form without payment to IBM, for the purpose of    -->
+<!--* assisting you in the development of your applications.                          -->
+<!--*                                                                                 -->
+<!--* The Sample code is provided to you on an "AS IS" basis, without warranty of     -->
+<!--* any kind. IBM HEREBY EXPRESSLY DISCLAIMS ALL WARRANTIES, EITHER EXPRESS OR      -->
+<!--* IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF               -->
+<!--* MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. Some jurisdictions do     -->
+<!--* not allow for the exclusion or limitation of implied warranties, so the above   -->
+<!--* limitations or exclusions may not apply to you. IBM shall not be liable for     -->
+<!--* any damages you suffer as a result of using, copying, modifying or              -->
+<!--* distributing the Sample, even if IBM has been advised of the possibility of     -->
+<!--* such damages.                                                                   -->
+<!--*                                                                                 -->
+<!-- ==============================================================================   --> 

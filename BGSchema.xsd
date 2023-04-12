@@ -1,0 +1,1612 @@
+<?xml version="1.0"?>
+<!-- ========================================================================= -->
+<!-- Business Glossary Category/Term Data File XML Schema                      -->
+<!-- ========================================================================= -->
+
+<!-- XML schema declaration -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.ibm.com/is/bg/importexport"
+    targetNamespace="http://www.ibm.com/is/bg/importexport"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+>
+
+  <!-- glossary declaration -->
+  <xsd:element name="glossary">
+  	<xsd:annotation>
+    	<xsd:documentation>
+    	This is the top level element that must be the root of every BG XML file.
+    	Nested within this element are all the CustomAttributes, Categories, Terms and Synonym Groups that will be imported
+    	</xsd:documentation>
+    </xsd:annotation>
+  <xsd:complexType>
+    <xsd:all>
+    	<xsd:element name="categoryCustomAttributes" minOccurs="0" maxOccurs="1">
+		  	<xsd:annotation>
+		    	<xsd:documentation>
+		    	This element is used to import Custom Attributes for Categories
+		    	</xsd:documentation>
+		    </xsd:annotation>
+    	  	<xsd:complexType >
+    			<xsd:sequence>
+      				<xsd:element name="customAttributeDef" type="customAttributeDefDef" minOccurs="0" maxOccurs="unbounded" />
+    			</xsd:sequence>
+  			</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="termCustomAttributes" minOccurs="0" maxOccurs="1">
+		  	<xsd:annotation>
+		    	<xsd:documentation>
+		    	This element is used to import Custom Attributes for Terms
+		    	</xsd:documentation>
+		    </xsd:annotation>
+    	  	<xsd:complexType >
+    			<xsd:sequence>
+      				<xsd:element name="customAttributeDef" type="customAttributeDefDef" minOccurs="0" maxOccurs="unbounded" />
+    			</xsd:sequence>
+  			</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="customAttributesDefinitions" minOccurs="0" maxOccurs="1">
+		  	<xsd:annotation>
+		    	<xsd:documentation>
+		    	This element is used to import Custom Attributes for all assets
+		    	</xsd:documentation>
+		    </xsd:annotation>
+    	  	<xsd:complexType >
+    			<xsd:sequence>
+      				<xsd:element name="customAttributeDef" type="customAttributeDefDef" minOccurs="0" maxOccurs="unbounded" />
+    			</xsd:sequence>
+  			</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="categories" minOccurs="0" maxOccurs="1">
+		  	<xsd:annotation>
+		    	<xsd:documentation>
+		    	This element is used to import Categories
+		    	</xsd:documentation>
+		    </xsd:annotation>
+    	  	<xsd:complexType >
+    			<xsd:sequence>
+      				<xsd:element name="category" type="categoryDef" minOccurs="0" maxOccurs="unbounded" />
+    			</xsd:sequence>
+  			</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="terms" minOccurs="0" maxOccurs="1">
+		  	<xsd:annotation>
+		    	<xsd:documentation>
+		    	This element is used to import Terms
+		    	</xsd:documentation>
+		    </xsd:annotation>
+    	  	<xsd:complexType >
+    			<xsd:sequence>
+      				<xsd:element name="term" type="termDef" minOccurs="0" maxOccurs="unbounded" />
+    			</xsd:sequence>
+  			</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="policies" minOccurs="0" maxOccurs="1">
+		  	<xsd:annotation>
+		    	<xsd:documentation>
+		    	This element is used to import Policies
+		    	</xsd:documentation>
+		    </xsd:annotation>
+    	  	<xsd:complexType >
+    			<xsd:sequence>
+      				<xsd:element name="policy" type="policyDef" minOccurs="0" maxOccurs="unbounded" />
+    			</xsd:sequence>
+  			</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="rules" minOccurs="0" maxOccurs="1">
+		  	<xsd:annotation>
+		    	<xsd:documentation>
+		    	This element is used to import Rules
+		    	</xsd:documentation>
+		    </xsd:annotation>
+    	  	<xsd:complexType >
+    			<xsd:sequence>
+      				<xsd:element name="rule" type="ruleDef" minOccurs="0" maxOccurs="unbounded" />
+    			</xsd:sequence>
+  			</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="synonymGroups" minOccurs="0" maxOccurs="1">
+		  	<xsd:annotation>
+		    	<xsd:documentation>
+		    	This element is used to import Synonym Groups
+		    	</xsd:documentation>
+		    </xsd:annotation>
+    	  	<xsd:complexType >
+    			<xsd:sequence>
+      				<xsd:element name="synonymGroup" type="synonymGroupDef" minOccurs="0" maxOccurs="unbounded" />
+    			</xsd:sequence>
+  			</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="translationGroups" minOccurs="0" maxOccurs="1">
+		  	<xsd:annotation>
+		    	<xsd:documentation>
+		    	This element is used to import Translation Groups
+		    	</xsd:documentation>
+		    </xsd:annotation>
+    	  	<xsd:complexType >
+    			<xsd:sequence>
+      				<xsd:element name="translationGroup" type="translationGroupDef" minOccurs="0" maxOccurs="unbounded" />
+    			</xsd:sequence>
+  			</xsd:complexType>
+    	</xsd:element>
+    	<xsd:element name="labelDefinitions" minOccurs="0" maxOccurs="1">
+		  	<xsd:annotation>
+		    	<xsd:documentation>
+		    	This element is used to import Label Definitions
+		    	</xsd:documentation>
+		    </xsd:annotation>
+    	  	<xsd:complexType >
+    			<xsd:sequence>
+      				<xsd:element name="labelDefinition" type="labelDef" minOccurs="0" maxOccurs="unbounded" />
+    			</xsd:sequence>
+  			</xsd:complexType>
+    	</xsd:element>
+    </xsd:all>
+    <xsd:attribute name="version" type="versionType" use="required"/>
+    <xsd:attribute name="exportTime" type="xsd:long" />
+    <xsd:attribute name="ignoreAssignedAssets" type="xsd:boolean">
+    	<xsd:annotation>
+    		<xsd:documentation>
+    		This option is telling the import process whether to merge imported
+    		Assigned Assets with existing assignments. Defaults to true.
+    		</xsd:documentation>
+    	</xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="ignoreLabeledAssets" type="xsd:boolean">
+    	<xsd:annotation>
+    		<xsd:documentation>
+    		This option is telling the import process whether to merge imported
+    		Labeled Assets with existing assignments. Defaults to true.
+    		</xsd:documentation>
+    	</xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="ignoreAssetCollections" type="xsd:boolean">
+    	<xsd:annotation>
+    		<xsd:documentation>
+    		This option is telling the import process whether to merge imported
+    		Asset Collections with existing assignments. Defaults to true.
+    		</xsd:documentation>
+    	</xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="ignoreStewards" type="xsd:boolean">
+    	<xsd:annotation>
+    		<xsd:documentation>
+    		This option is telling the import process whether to merge imported
+    		Steward assignments with existing assignments. Defaults to true.
+    		</xsd:documentation>
+    	</xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+  </xsd:element>
+
+  <!--  asset ref declaration -->
+  <xsd:complexType name="baseAssetRefDef" abstract="true">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model the base class for all asset references.
+		It includes only a rid.
+		</xsd:documentation>
+	</xsd:annotation>
+ 	<xsd:attribute name="rid" type="ridType">
+		<xsd:annotation>
+	    <xsd:documentation>This is the Information Server id of the Label Definition, this field is populated when an XML is exported, then the field should not be removed or changed</xsd:documentation>
+	    </xsd:annotation>
+    </xsd:attribute>
+  </xsd:complexType>
+
+  <!--  label def declaration -->
+  <xsd:complexType name="labelDef">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a Label definition.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:all>
+    	<xsd:element name="labeledAssets" type="itAssetRefList" minOccurs="0" maxOccurs="1">
+	  		<xsd:annotation>
+      			<xsd:documentation>It assets that are assigned to this label</xsd:documentation>
+      		</xsd:annotation>
+  		</xsd:element>
+    </xsd:all>
+ 	<xsd:attribute name="rid" type="ridType">
+		<xsd:annotation>
+	    <xsd:documentation>This is the Information Server id of the Label Definition, this field is populated when an XML is exported, then the field should not be removed or changed</xsd:documentation>
+	    </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="name"  type="shortStringType" use="required"/>
+    <xsd:attribute name="description" type="longStringType" />
+  </xsd:complexType>
+
+  <!-- base glossary asset declaration -->
+  <xsd:complexType name="glossaryAssetDef" abstract="true">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a base glossary asset which hold common references.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:attribute name="rid"              		type="ridType">
+		<xsd:annotation>
+	    <xsd:documentation>This is the Information Server id of the Category, this field is populated when an XML is exported, then the field should not be removed or changed</xsd:documentation>
+	    </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="name"             		type="shortStringType" use="required"/>
+    <xsd:attribute name="shortDescription" 		type="shortStringType" />
+    <xsd:attribute name="longDescription"  		type="longStringType"/>
+    <xsd:attribute name="language"              type="languageStringType"></xsd:attribute>
+  </xsd:complexType>
+
+  <!-- category declaration -->
+  <xsd:complexType name="categoryDef">
+  	<xsd:annotation>
+  		<xsd:documentation>
+  			This complex type is used to model a Category.
+  		</xsd:documentation>
+  	</xsd:annotation>
+  	<xsd:complexContent>
+  		<xsd:extension base="glossaryAssetDef">
+		    <xsd:all minOccurs="1" maxOccurs="1">
+		      	<xsd:element name="customAttributes"  	type="customAttributeList" 	minOccurs="0" maxOccurs="1">
+		      		<xsd:annotation>
+			      	<xsd:documentation>Custom attributes that pertain to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="notes"       	   	type="noteList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Notes that pertain to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="labels"       	   	type="labelList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Labels assigned to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="assetCollections"       	   	type="collectionRefList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Collections assigned to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="steward"       		type="stewardRef" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The Steward of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="stewards"       		type="stewardRefList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The Stewards of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="workflow"       		type="workflowRef" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The workflow metadata of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="parentCategory" 		type="categoryRefDef" 		minOccurs="0" maxOccurs="1">
+			      	<xsd:annotation>
+				      	<xsd:documentation>The parent Category of this Category, this element should be left out for top level Categories</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="referencedTerms"   	type="termRefList"         	minOccurs="0" maxOccurs="1" >
+			      	<xsd:annotation>
+				      	<xsd:documentation>Terms that are referenced by this Category, note this should not include Terms that are directly contained by this Category</xsd:documentation>
+			      	</xsd:annotation>
+			    </xsd:element>
+		    </xsd:all>
+  		</xsd:extension>
+  	</xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- term declaration -->
+  <xsd:complexType name="termDef" >
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a Term.
+		</xsd:documentation>
+	</xsd:annotation>
+  	<xsd:complexContent>
+  		<xsd:extension base="glossaryAssetDef">
+		    <xsd:all minOccurs="1" maxOccurs="1">
+		      	<xsd:element name="customAttributes"  	type="customAttributeList" 	minOccurs="0" maxOccurs="1">
+		      		<xsd:annotation>
+			      	<xsd:documentation>Custom attributes that pertain to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="notes"       	   	type="noteList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Notes that pertain to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="labels"       	   	type="labelList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Labels assigned to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="assetCollections"       	   	type="collectionRefList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Collections assigned to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="steward"       		type="stewardRef" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The Steward of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="stewards"       		type="stewardRefList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The Stewards of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="workflow"       		type="workflowRef" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The workflow metadata of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="parentCategory" 		type="categoryRefDef" 		minOccurs="1" maxOccurs="1">
+			      	<xsd:annotation>
+			      	<xsd:documentation>The parent Category of this Term</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="referencedByCategories" type="categoryRefList"   minOccurs="0" maxOccurs="1">
+			      	<xsd:annotation>
+			      	<xsd:documentation>Categories that reference this Term, note this should not include the Category that directly contains this Term</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		  		<xsd:element name="replacedByTerm" 		type="termRefDef" 			minOccurs="0" maxOccurs="1">
+			      	<xsd:annotation>
+			      	<xsd:documentation>Other Terms that this Term replaces, note only a Standard Term can replace other Terms, only Deprecated Terms can be replaced</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		  		<xsd:element name="relatedTerms" 		type="termRefList" 			minOccurs="0" maxOccurs="1">
+			      	<xsd:annotation>
+			      	<xsd:documentation>Other Terms that are related to this Term</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="hasA" 		type="termRefList" 			minOccurs="0" maxOccurs="1">
+			      	<xsd:annotation>
+			      	<xsd:documentation>Other terms that this term has</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="isOf" 		type="termRefList" 			minOccurs="0" maxOccurs="1">
+			      	<xsd:annotation>
+			      	<xsd:documentation>Other terms that compose this term</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="isATypeOf" 		type="termRefList" 			minOccurs="0" maxOccurs="1">
+			      	<xsd:annotation>
+			      	<xsd:documentation>Other terms that are supertypes of this term</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="hasTypes" 		type="termRefList" 			minOccurs="0" maxOccurs="1">
+			      	<xsd:annotation>
+			      	<xsd:documentation>Other terms that are subtypes of this term</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+				<xsd:element ref="assignedAssets" minOccurs="0" maxOccurs="1"/>
+		  	</xsd:all>
+		  	<xsd:attribute name="status" 				type="statusType" />
+		  	<xsd:attribute name="usage" 				type="longStringType" />
+		  	<xsd:attribute name="example" 				type="longStringType" />
+		  	<xsd:attribute name="abbreviation" 			type="shortStringType" />
+		  	<xsd:attribute name="additionalAbbreviation" type="shortStringType"/>
+		  	<xsd:attribute name="type" 					type="termType"/>		<!-- defaults to NONE -->
+		  	<xsd:attribute name="isModifier" 			type="xsd:boolean"/>    <!-- defaults to FALSE -->
+  		</xsd:extension>
+  	</xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- policy declaration -->
+  <xsd:complexType name="policyDef">
+  	<xsd:annotation>
+  		<xsd:documentation>
+  			This complex type is used to model a Policy.
+  		</xsd:documentation>
+  	</xsd:annotation>
+  	<xsd:complexContent>
+  		<xsd:extension base="glossaryAssetDef">
+		    <xsd:all minOccurs="1" maxOccurs="1">
+		      	<xsd:element name="customAttributes"  	type="customAttributeList" 	minOccurs="0" maxOccurs="1">
+		      		<xsd:annotation>
+			      	<xsd:documentation>Custom attributes that pertain to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="notes"       	   	type="noteList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Notes that pertain to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="labels"       	   	type="labelList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Labels assigned to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="assetCollections"       	   	type="collectionRefList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Collections assigned to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="steward"       		type="stewardRef" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The Steward of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="stewards"       		type="stewardRefList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The Stewards of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="workflow"       		type="workflowRef" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The workflow metadata of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="parentPolicy" 		type="policyRefDef" 		minOccurs="0" maxOccurs="1">
+			      	<xsd:annotation>
+				      	<xsd:documentation>The parent Policy of this Category, this element should be left out for top level Policies</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="referencedRules"   	type="ruleRefList"         	minOccurs="0" maxOccurs="1" >
+			      	<xsd:annotation>
+				      	<xsd:documentation>Rules that are referenced by this Policy</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		    </xsd:all>
+  		</xsd:extension>
+  	</xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- Rule declaration -->
+  <xsd:complexType name="ruleDef">
+  	<xsd:annotation>
+  		<xsd:documentation>
+  			This complex type is used to model a Business Rule.
+  		</xsd:documentation>
+  	</xsd:annotation>
+  	<xsd:complexContent>
+  		<xsd:extension base="glossaryAssetDef">
+		    <xsd:all>
+		      	<xsd:element name="customAttributes"  	type="customAttributeList" 	minOccurs="0" maxOccurs="1">
+		      		<xsd:annotation>
+			      	<xsd:documentation>Custom attributes that pertain to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="notes"       	   	type="noteList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Notes that pertain to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="labels"       	   	type="labelList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Labels assigned to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="assetCollections"       	   	type="collectionRefList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>Collections assigned to this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="steward"       		type="stewardRef" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The Steward of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="stewards"       		type="stewardRefList" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The Stewards of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="workflow"       		type="workflowRef" 			minOccurs="0" maxOccurs="1">
+					<xsd:annotation>
+			      	<xsd:documentation>The workflow metadata of this asset</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="referencedByPolicies" 	type="policyRefList" 	minOccurs="0" maxOccurs="1">
+			      	<xsd:annotation>
+				      	<xsd:documentation>Policies that are referenced by this Rule</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="relatedRules"   	type="ruleRefList"         	minOccurs="0" maxOccurs="1" >
+			      	<xsd:annotation>
+				      	<xsd:documentation>Rules that are related to this Rule</xsd:documentation>
+			      	</xsd:annotation>
+		      	</xsd:element>
+		      	<xsd:element name="typedAssignedAssets" minOccurs="0" maxOccurs="1">
+		      		<xsd:complexType>
+		      			<xsd:sequence>
+					  		<xsd:element ref="assignedAssets" minOccurs="0" maxOccurs="unbounded"/>
+		      			</xsd:sequence>
+		      		</xsd:complexType>
+		      	</xsd:element>
+		    </xsd:all>
+  		</xsd:extension>
+  	</xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="synonymGroupDef" >
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a Synonym Group.
+		</xsd:documentation>
+	</xsd:annotation>
+  	<xsd:all>
+		<xsd:element name="synonyms" type="termRefList" minOccurs="1" maxOccurs="1" />
+		<xsd:element name="preferredSynonym" type="termRefDef" minOccurs="0" maxOccurs="1">
+      		<xsd:annotation>
+	      	<xsd:documentation>This is the preferred synonym of the SynonymGroup, note the preferred synonym must be one of the members of the group</xsd:documentation>
+	      	</xsd:annotation>
+      	</xsd:element>
+  	</xsd:all>
+  </xsd:complexType>
+  
+  <xsd:complexType name="translationGroupDef" >
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a Translation Group.
+		</xsd:documentation>
+	</xsd:annotation>
+  	<xsd:all>
+		<xsd:element name="translations" minOccurs="0" maxOccurs="1" >
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element name="categoryRef" type="categoryRefDef" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="termRef" type="termRefDef" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="policyRef" type="policyRefDef" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element name="ruleRef" type="ruleRefDef" minOccurs="0" maxOccurs="unbounded"/>			
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:element>
+  	</xsd:all>
+  </xsd:complexType>
+	
+  <xsd:complexType name="assetType">
+	<xsd:sequence>
+		<xsd:element name="classType" minOccurs="1" maxOccurs="unbounded">
+			<xsd:complexType>
+				<xsd:attribute name="value" type="shortStringType"	use="required" />
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:sequence>
+  </xsd:complexType>
+  
+  <!-- custom attribute declaration -->
+  <xsd:complexType name="customAttributeDefDef">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a Custom Attribute.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:all>
+      <xsd:element name="validValues" minOccurs="0" maxOccurs="1">
+		  <xsd:complexType>
+		    <xsd:sequence>
+		      <xsd:element name="validValue" minOccurs="1" maxOccurs="unbounded">
+		        <xsd:complexType>
+		          <xsd:attribute name="value" type="shortStringType" use="required"/>
+		          <xsd:attribute name="description" type="longStringType"/>
+		        </xsd:complexType>
+		      </xsd:element>
+		    </xsd:sequence>
+		  </xsd:complexType>
+      </xsd:element>     
+      <xsd:element name="appliesTo" type="assetType" minOccurs="0" maxOccurs="1"/>
+      <xsd:element name="relatesTo" type="assetType" minOccurs="0" maxOccurs="1"/>
+    </xsd:all>
+    <xsd:attribute name="rid"         type="ridType">
+		<xsd:annotation>
+	    <xsd:documentation>This is the Information Server id of the Custom Attribute, this field is populated when an XML is exported, then the field should not be removed or changed</xsd:documentation>
+	    </xsd:annotation>
+    </xsd:attribute>
+    <xsd:attribute name="name"        		type="shortStringType" 	use="required"/>
+    <xsd:attribute name="description" 		type="longStringType" />
+    <xsd:attribute name="attributeType" 	type="attributeType" />
+    <xsd:attribute name="multipleValues" 	type="xsd:boolean" />
+    <xsd:attribute name="inverseReferenceName" type="shortStringType"/>   
+  </xsd:complexType>
+
+
+  <!-- custom attribute value list -->
+  <xsd:complexType name="customAttributeList">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model values for Custom Attributes.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:sequence>
+		<xsd:element name="customAttributeValue" minOccurs="0"
+			maxOccurs="unbounded">
+			<xsd:complexType>
+				<xsd:sequence>
+					<xsd:element name="attributeValue" minOccurs="0"
+						maxOccurs="unbounded">
+						<xsd:complexType>
+							<xsd:attribute name="value" type="longStringType"
+								use="required" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="customAttributeReferences" type="itAssetRefList"
+						minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation>custom asset assignments</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="customAttribute" type="shortStringType"
+					use="required" />
+				<xsd:attribute name="value" type="longStringType" />
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:sequence> 
+  </xsd:complexType>
+
+
+
+
+  <!-- glossary asset reference -->
+  <xsd:complexType name="glossaryAssetRefDef">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a reference to a glossary Asset.
+		The asset can be referred to using its identity or its rid.
+		The identity is a string that represents the asset name and its context.
+		The rid is the Information Server id of the asset.
+		</xsd:documentation>
+	</xsd:annotation>
+  	<xsd:complexContent>
+  		<xsd:extension base="baseAssetRefDef">
+		    <xsd:attribute name="identity" 	type="identityType"/>
+    	</xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- category reference -->
+  <xsd:complexType name="categoryRefDef">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a reference to a Category.
+		The Category can be referred to using its identity or its rid.
+		The identity is a string that represents the Category name and its context.
+		The rid is the Information Server id of the Category.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexContent>
+		<xsd:extension base="glossaryAssetRefDef"/>
+	</xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- term reference -->
+  <xsd:complexType name="termRefDef" >
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a reference to a Term.
+		The Term can be referred to using its identity or its rid.
+		The identity is a string that represents the Terms name and its context.
+		The rid is the Information Server id of the Term.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexContent>
+		<xsd:extension base="glossaryAssetRefDef"/>
+	</xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- term reference -->
+  <xsd:complexType name="policyRefDef" >
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a reference to a Policy.
+		The Policy can be referred to using its identity or its rid.
+		The identity is a string that represents the Policy name and its context.
+		The rid is the Information Server id of the Policy.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexContent>
+		<xsd:extension base="glossaryAssetRefDef"/>
+	</xsd:complexContent>
+  </xsd:complexType>
+
+  <!-- term reference -->
+  <xsd:complexType name="ruleRefDef" >
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a reference to a Rule.
+		The Rule can be referred to using its identity or its rid.
+		The identity is a string that represents the Rule name and its context.
+		The rid is the Information Server id of the Rule.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexContent>
+		<xsd:extension base="glossaryAssetRefDef"/>
+	</xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="categoryRefList">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a list of references to Categories.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="categoryRef" type="categoryRefDef" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="termRefList">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a list of references to Terms.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="termRef" type="termRefDef" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="policyRefList">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a list of references to Terms.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="policyRef" type="policyRefDef" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ruleRefList">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a list of references to Terms.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="ruleRef" type="ruleRefDef" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- note list -->
+  <xsd:complexType name="noteList">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a list of Notes.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="note" minOccurs="0" maxOccurs="unbounded">
+		  <xsd:complexType>
+		    <xsd:attribute name="label" 	type="shortStringType" use="required"/>
+		    <xsd:attribute name="comment"   type="longStringType" />
+		     <xsd:attribute name="type"   type="noteType" />
+		    <xsd:attribute name="status"   type="noteStatusType" />		   
+		  </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- label list -->
+  <xsd:complexType name="labelList">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a list of assigned labels.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="label" minOccurs="0" maxOccurs="unbounded">
+		  <xsd:complexType>
+		    <xsd:attribute name="name" 	type="shortStringType" use="required"/>
+		  </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="collectionRefDef" >
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a reference to a Collection.
+		The Collection can be referred to using its identity or its rid.
+		The identity is a string that represents the Collection name.
+		The rid is the Information Server id of the Collection.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:complexContent>
+		<xsd:extension base="glossaryAssetRefDef"/>
+	</xsd:complexContent>
+  </xsd:complexType>
+  
+  <xsd:complexType name="collectionRefList">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a list of assigned collections.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="assetCollection" type="collectionRefDef" minOccurs="0" maxOccurs="unbounded">
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+
+
+  <xsd:complexType name="stewardRef">
+    <xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to a reference to a Steward.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:attribute name="userName" type="shortStringType" use="required">
+	    <xsd:annotation>
+	    <xsd:documentation>This attribute refers to the unique User Name found in the glossary steward management screen</xsd:documentation>
+	    </xsd:annotation>
+	    </xsd:attribute>
+    <xsd:attribute name="type"  type="stewardType" use="required"/>
+  </xsd:complexType>
+  
+  <xsd:complexType name="stewardRefList">
+    <xsd:annotation>
+		<xsd:documentation>
+		   This complex type is used to a reference to a Steward List.
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:sequence>
+	   <xsd:element name="steward" type="stewardRef" minOccurs="0" maxOccurs="unbounded" /> 
+	</xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="workflowRef">
+    <xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to store wrokflow metadata.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:attribute name="task" type="workflowChangeType" use="required"/>
+    <xsd:attribute name="state" type="workflowStateType" use="required"/>
+    <xsd:attribute name="lastActivity" type="workflowActivityType"/>
+    <xsd:attribute name="lastHandledBy" type="shortStringType"/>
+    <xsd:attribute name="lastActivityDate" type="shortStringType"/>
+    <xsd:attribute name="comment" type="longStringType"/>
+  </xsd:complexType>
+
+  <xsd:element name="extensionDataSourceRef">
+	  <xsd:complexType>
+	  	<xsd:complexContent>
+	  		<xsd:extension base="baseAssetRefDef">
+			    <xsd:all minOccurs="0" maxOccurs="1">
+			  		<xsd:element ref="extensionDataSourceRef" minOccurs="1" maxOccurs="1"/>
+				</xsd:all>
+				<xsd:attribute name="name" type="shortStringType" use="required"/>
+				<xsd:attribute name="type" type="shortStringType" use="required"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	  </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="attributeVal">
+	  <xsd:complexType>
+			<xsd:attribute name="name" type="shortStringType" use="required"/>
+			<xsd:attribute name="value" type="shortStringType" use="required"/>
+	  </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="referenceVal">
+	  <xsd:complexType>
+	    <xsd:all minOccurs="1" maxOccurs="1">
+	  		<xsd:element ref="assetRef" minOccurs="1" maxOccurs="1"/>
+		</xsd:all>
+		<xsd:attribute name="reference" type="shortStringType" use="required"/>
+	  </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="assetRef">
+	  <xsd:complexType >
+	  	<xsd:annotation>
+			<xsd:documentation>
+			This complex type is used to model a reference to any Asset.
+			</xsd:documentation>
+		</xsd:annotation>
+	    <xsd:sequence>
+	  		<xsd:element ref="attributeVal" minOccurs="0" maxOccurs="unbounded"/>
+	  		<xsd:element ref="referenceVal" minOccurs="0" maxOccurs="unbounded"/>
+	    </xsd:sequence>
+		<xsd:attribute name="assetRid" type="ridType" />
+		<xsd:attribute name="className" type="shortStringType" use="required"/>
+		<xsd:attribute name="packageUri" type="shortStringType" use="required"/>
+	  </xsd:complexType>
+  </xsd:element>
+
+  <!--  Base class for DB table and Stored Procedure -->
+  	<xsd:complexType name="dataGroupDef" abstract="true">
+	  	<xsd:complexContent>
+	  		<xsd:extension base="baseAssetRefDef">
+		   		<xsd:attribute name="host" type="shortStringType" use="required"/>
+		   		<xsd:attribute name="databaseName" type="shortStringType" use="required"/>
+		   		<xsd:attribute name="databaseInstance" type="shortStringType" />
+		   		<xsd:attribute name="databaseDBMS" type="shortStringType" />
+		   		<xsd:attribute name="databasePath" type="shortStringType" />
+		   		<xsd:attribute name="schema" type="shortStringType" use="required"/>
+		   	</xsd:extension>
+		</xsd:complexContent>
+   	</xsd:complexType>
+
+
+  <!--  Logical Data Model types -->
+  <xsd:element name="logicalDataModelRef">
+	<xsd:complexType >
+	  	<xsd:complexContent>
+	  		<xsd:extension base="baseAssetRefDef">
+			    <xsd:all minOccurs="0" maxOccurs="1">
+			  		<xsd:element ref="logicalDataModelRef" minOccurs="1" maxOccurs="1"/>
+				</xsd:all>
+				<xsd:attribute name="name" type="shortStringType" use="required"/>
+				<xsd:attribute name="namespace" type="shortStringType"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	  </xsd:complexType>
+  </xsd:element>
+
+  <xsd:complexType name="logicalDataModelEntityRefDef">
+  	<xsd:complexContent>
+  		<xsd:extension base="baseAssetRefDef">
+		    <xsd:all minOccurs="1" maxOccurs="1">
+		  		<xsd:element ref="logicalDataModelRef" minOccurs="1" maxOccurs="1"/>
+			</xsd:all>
+			<xsd:attribute name="name" type="shortStringType" use="required"/>
+		</xsd:extension>
+	</xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="logicalDataModelAttributeRefDef">
+  	<xsd:complexContent>
+  		<xsd:extension base="baseAssetRefDef">
+		    <xsd:all minOccurs="1" maxOccurs="1">
+		  		<xsd:element name="logicalDataModelEntityRef" type="logicalDataModelEntityRefDef" minOccurs="1" maxOccurs="1"/>
+			</xsd:all>
+			<xsd:attribute name="name" type="shortStringType" use="required"/>
+		</xsd:extension>
+	</xsd:complexContent>
+  </xsd:complexType>
+
+   <!--  Physical Model types -->
+   <xsd:element name="physicalModelRef">
+	<xsd:complexType >
+	  	<xsd:complexContent>
+	  		<xsd:extension base="baseAssetRefDef">
+			    <xsd:all minOccurs="0" maxOccurs="1">
+			  		<xsd:element ref="physicalModelRef" minOccurs="1" maxOccurs="1"/>
+				</xsd:all>
+				<xsd:attribute name="name" type="shortStringType" use="required"/>
+				<xsd:attribute name="namespace" type="shortStringType"/>
+			</xsd:extension>
+		</xsd:complexContent>
+	  </xsd:complexType>
+  </xsd:element>
+
+  <xsd:complexType name="physicalModelEntityRefDef">
+  	<xsd:complexContent>
+  		<xsd:extension base="baseAssetRefDef">
+		    <xsd:all minOccurs="1" maxOccurs="1">
+		  		<xsd:element ref="physicalModelRef" minOccurs="1" maxOccurs="1"/>
+			</xsd:all>
+			<xsd:attribute name="name" type="shortStringType" use="required"/>
+		</xsd:extension>
+	</xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="physicalModelAttributeRefDef">
+  	<xsd:complexContent>
+  		<xsd:extension base="baseAssetRefDef">
+		    <xsd:all minOccurs="1" maxOccurs="1">
+		  		<xsd:element name="physicalModelEntityRef" type="physicalModelEntityRefDef" minOccurs="1" maxOccurs="1"/>
+			</xsd:all>
+			<xsd:attribute name="name" type="shortStringType" use="required"/>
+		</xsd:extension>
+	</xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:complexType name="designStoredProcedureRefDef">
+  	<xsd:complexContent>
+  		<xsd:extension base="baseAssetRefDef">
+		    <xsd:all minOccurs="1" maxOccurs="1">
+		  		<xsd:element ref="physicalModelRef" minOccurs="1" maxOccurs="1"/>
+			</xsd:all>
+			<xsd:attribute name="storedProcedure" type="shortStringType" use="required"/>
+			<xsd:attribute name="storedProcedureQualifier" type="shortStringType"/>
+		</xsd:extension>
+	</xsd:complexContent>
+  </xsd:complexType>
+  
+  <!-- ASCLBI Model Types -->
+  <xsd:element name="BIServerRef">
+  	<xsd:complexType>
+	  	<xsd:complexContent>
+	  		<xsd:extension base="baseAssetRefDef">
+				<xsd:attribute name="name" type="shortStringType" use="required"/>  
+			</xsd:extension>
+		</xsd:complexContent>		
+  	</xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name="BIFolderRef">
+  	<xsd:complexType>
+  		<xsd:complexContent>
+  			<xsd:extension base="baseAssetRefDef">
+  				<xsd:choice minOccurs="1" maxOccurs="1">
+  					<xsd:element ref="BIServerRef" minOccurs="0" maxOccurs="1"/>
+  					<xsd:element ref="BIFolderRef" minOccurs="0" maxOccurs="1"/>
+  				</xsd:choice>
+  				<xsd:attribute name="name" type="shortStringType" use="required"/>
+  			</xsd:extension>
+  		</xsd:complexContent>
+  	</xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name="BIReportModelRef">
+  	<xsd:complexType>
+  		<xsd:complexContent>
+  			<xsd:extension base="baseAssetRefDef">
+  				<xsd:choice minOccurs="1" maxOccurs="1">
+  					<xsd:element ref="BIReportModelRef" minOccurs="0" maxOccurs="1"/>
+  					<xsd:element ref="BIFolderRef" minOccurs="0" maxOccurs="1"/>
+  				</xsd:choice>
+  				<xsd:attribute name="reportModel" type="shortStringType" use="required"/>
+  				<xsd:attribute name="nameSpace" type="shortStringType" />
+  			</xsd:extension>
+  		</xsd:complexContent>
+  	</xsd:complexType>
+  </xsd:element>
+  
+  <xsd:element name="BIReportCollectionRef">
+  	<xsd:complexType>
+  		<xsd:complexContent>
+  			<xsd:extension base="baseAssetRefDef">
+  				<xsd:choice minOccurs="1" maxOccurs="1">
+  					<xsd:element ref="BIReportModelRef" minOccurs="0" maxOccurs="1"/>
+  					<xsd:element ref="BIReportCollectionRef" minOccurs="0" maxOccurs="1"/>
+  				</xsd:choice>
+  				<xsd:attribute name="reportCollection" type="shortStringType" use="required"/>
+	      		<xsd:attribute name="nameSpace" type="shortStringType" />
+	      		<xsd:attribute name="reportModel" type="shortStringType"/>
+	      		<xsd:attribute name="reportModelNameSpace" type="shortStringType" />
+  			</xsd:extension>
+  		</xsd:complexContent>
+  	</xsd:complexType>
+  </xsd:element>
+  
+   <xsd:element name="BIReportMemberRef">
+   	<xsd:complexType>
+   		<xsd:complexContent>
+   			<xsd:extension base="baseAssetRefDef">
+   				<xsd:all>
+	      			<xsd:element ref="BIReportCollectionRef" minOccurs="0" maxOccurs="1" />
+	      		</xsd:all>
+	      		<xsd:attribute name="reportModel" type="shortStringType"/>
+	      		<xsd:attribute name="reportModelNameSpace" type="shortStringType" />
+	      		<xsd:attribute name="reportCollection" type="shortStringType"/>
+	      		<xsd:attribute name="reportCollectionNameSpace" type="shortStringType" />
+   				<xsd:attribute name="reportMember" type="shortStringType" use="required"/>
+   				<xsd:attribute name="nameSpace" type="shortStringType" />
+   			</xsd:extension>
+   		</xsd:complexContent>
+   	</xsd:complexType>
+   </xsd:element>
+   
+   <xsd:element name="BICubeRef">
+   	<xsd:complexType>
+   		<xsd:complexContent>
+   			<xsd:extension base="baseAssetRefDef">
+   				<xsd:all>
+   					<xsd:element ref="BIReportModelRef" minOccurs="1" maxOccurs="1" />
+   				</xsd:all>
+   				<xsd:attribute name="name" type="shortStringType" use="required"/>
+   				<xsd:attribute name="namespace" type="shortStringType"/>
+   			</xsd:extension>
+   		</xsd:complexContent>
+   	</xsd:complexType>
+   </xsd:element>
+   
+   <xsd:element name="BIReportRef">
+	  <xsd:complexType>
+	  	<xsd:complexContent>
+	  		<xsd:extension base="baseAssetRefDef">
+	  			<xsd:choice minOccurs="1" maxOccurs="1">
+	  				<xsd:element ref="BIFolderRef" minOccurs="0" maxOccurs="1" />
+	  				<xsd:element ref="BIReportModelRef" minOccurs="0" maxOccurs="1" />
+	  				<xsd:element ref="BICubeRef" minOccurs="0" maxOccurs="1" />
+	  			</xsd:choice>
+	  			<xsd:attribute name="report" type="shortStringType" use="required"/>
+	  			<xsd:attribute name="reportNameSpace" type="shortStringType" />
+	  		</xsd:extension>
+	  	</xsd:complexContent>
+	  </xsd:complexType>
+   </xsd:element>
+  
+  <xsd:complexType name="oslcLinkRefDef">
+  	<xsd:complexContent>
+  		<xsd:extension base="baseAssetRefDef">
+			<xsd:attribute name="uri" type="mediumLongStringType" use="required"/>
+			<xsd:attribute name="description">
+			   <xsd:simpleType>
+			  	<xsd:restriction base="xsd:string">
+			  		<xsd:maxLength value="4000"/>
+			  	</xsd:restriction>
+			  </xsd:simpleType>
+			</xsd:attribute>
+			<xsd:attribute name="serverConnectionRootServicesURI" type="mediumLongStringType" use="required"/>
+		</xsd:extension>
+	</xsd:complexContent>
+  </xsd:complexType>
+
+  <xsd:element name="assignedAssets" type="itAssetRefList">
+	  <xsd:annotation>
+      	<xsd:documentation>It assets that are assigned to this Term</xsd:documentation>
+      </xsd:annotation>
+  </xsd:element>   
+  
+  <xsd:complexType name="itAssetRefList">
+  	<xsd:annotation>
+		<xsd:documentation>
+		This complex type is used to model a list of references to Assets.
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+	    <xsd:choice>
+	      <xsd:element ref="extensionDataSourceRef" minOccurs="0" maxOccurs="1"/>
+	      <xsd:element name="extensionMappingDocumentRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:annotation>
+					<xsd:documentation>
+					This complex type is used to model a Mapping Document.
+					</xsd:documentation>
+				</xsd:annotation>
+	      		<xsd:complexContent>
+	      			<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="name" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="fileName" type="shortStringType" />
+			      		<xsd:attribute name="dirName" type="shortStringType" />
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+      	  <xsd:element name="categoryRef" type="categoryRefDef" minOccurs="0" maxOccurs="1"/>
+      	  <xsd:element name="termRef" type="termRefDef" minOccurs="0" maxOccurs="1"/>
+	      <xsd:element ref="assetRef" minOccurs="0" maxOccurs="1"/>
+      	  <xsd:element name="externalAssetReferenceRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:annotation>
+					<xsd:documentation>
+					This complex type is used to model a External Asset Reference.
+					</xsd:documentation>
+				</xsd:annotation>
+	      		<xsd:attribute name="name" type="shortStringType" use="required"/>
+	      		<xsd:attribute name="type" type="shortStringType" />
+						<xsd:attribute name="longDescription" 		type="longStringType" />
+	      		<xsd:attribute name="url" type="mediumStringType" />
+	      		<xsd:attribute name="location" type="mediumStringType" />
+	      		<xsd:attribute name="context" type="mediumStringType" />
+	      		<xsd:attribute name="externalIdentifier" type="mediumStringType" />
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="hostRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+					  	<xsd:annotation>
+							<xsd:documentation>
+							This complex type is used to model a reference to a Server.
+							</xsd:documentation>
+						</xsd:annotation>
+			      		<xsd:attribute name="host" type="shortStringType" use="required"/>
+			      	</xsd:extension>
+				</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="databaseRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+					  	<xsd:annotation>
+							<xsd:documentation>
+							This complex type is used to model a reference to a Database.
+							</xsd:documentation>
+						</xsd:annotation>
+			      		<xsd:attribute name="host" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="databaseName" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="databaseInstance" type="shortStringType" />
+			      		<xsd:attribute name="databaseDBMS" type="shortStringType" />
+			      		<xsd:attribute name="databasePath" type="shortStringType" />
+			      	</xsd:extension>
+				</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="schemaRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="host" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="databaseName" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="databaseInstance" type="shortStringType" />
+			      		<xsd:attribute name="databaseDBMS" type="shortStringType" />
+			      		<xsd:attribute name="databasePath" type="shortStringType" />
+			      		<xsd:attribute name="schema" type="shortStringType" use="required"/>
+			      	</xsd:extension>
+				</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="tableRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+	      		<xsd:complexContent>
+	      			<xsd:extension base="dataGroupDef">
+			      		<xsd:attribute name="table" type="shortStringType" use="required"/>
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="columnRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="host" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="databaseName" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="databaseInstance" type="shortStringType" />
+			      		<xsd:attribute name="databaseDBMS" type="shortStringType" />
+			      		<xsd:attribute name="databasePath" type="shortStringType" />
+			      		<xsd:attribute name="schema" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="table" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="column" type="shortStringType" use="required"/>
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="dataFileRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="file" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="path" type="shortStringType"/>
+			      		<xsd:attribute name="host" type="shortStringType" use="required"/>
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="fileStructureRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="host" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="fileName" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="filePath" type="shortStringType" />
+			      		<xsd:attribute name="structure" type="shortStringType" use="required"/>
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="fileFieldRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="host" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="fileName" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="filePath" type="shortStringType" />
+			      		<xsd:attribute name="structure" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="field" type="shortStringType" use="required"/>
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="storedProcedureRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+	      		<xsd:complexContent>
+	      			<xsd:extension base="dataGroupDef">
+			      		<xsd:attribute name="storedProcedure" type="shortStringType" use="required"/>
+						<xsd:attribute name="storedProcedureQualifier" type="shortStringType"/>
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element ref="BIServerRef" minOccurs="0" maxOccurs="1"/>
+	      <xsd:element ref="BIReportRef" minOccurs="0" maxOccurs="1"/>
+	      <xsd:element ref="BIReportModelRef" minOccurs="0" maxOccurs="1" />
+	      <xsd:element ref="BIReportCollectionRef" minOccurs="0" maxOccurs="1" />
+	      <xsd:element ref="BIReportMemberRef" minOccurs="0" maxOccurs="1" />
+	      <xsd:element ref="BICubeRef" minOccurs="0" maxOccurs="1" />
+	      <xsd:element name="jobRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="job" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="nameSpace" type="shortStringType" use="required" />
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="sharedContainerRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="container" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="nameSpace" type="shortStringType" use="required" />
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="tableDefinitionRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="table" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="nameQualifier" type="shortStringType" />
+			      		<xsd:attribute name="nameSpace" type="shortStringType" use="required"/>
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+	      <xsd:element name="columnDefinitionRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+			  	<xsd:complexContent>
+			  		<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="column" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="table" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="tableNameQualifier" type="shortStringType" />
+			      		<xsd:attribute name="tableNameSpace" type="shortStringType" use="required" />
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+		  <xsd:element name="ruleRef" type="ruleRefDef" minOccurs="0" maxOccurs="1" />
+		  <xsd:element name="policyRef" type="policyRefDef" minOccurs="0" maxOccurs="1" />
+	      <!-- Logical Data Model elements -->
+	      <xsd:element ref="logicalDataModelRef" minOccurs="0" maxOccurs="1"/>
+	      <xsd:element name="logicalDataModelEntityRef" type="logicalDataModelEntityRefDef" minOccurs="0" maxOccurs="1"/>
+	      <xsd:element name="logicalDataModelAttributeRef" type="logicalDataModelAttributeRefDef" minOccurs="0" maxOccurs="1"/>
+	      <xsd:element name="logicalSubjectAreaRef" type="logicalDataModelEntityRefDef" minOccurs="0" maxOccurs="1"/>
+
+	      <!-- Physical Model elements -->
+	      <xsd:element ref="physicalModelRef" minOccurs="0" maxOccurs="1"/>
+	      <xsd:element name="physicalModelEntityRef" type="physicalModelEntityRefDef" minOccurs="0" maxOccurs="1"/>
+	      <xsd:element name="physicalModelAttributeRef" type="physicalModelAttributeRefDef" minOccurs="0" maxOccurs="1"/>
+	      <xsd:element name="designStoredProcedureRef" type="designStoredProcedureRefDef" minOccurs="0" maxOccurs="1"/>
+
+	      <!-- Blueprint Model elements -->
+	      <xsd:element name="blueprintRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+	      		<xsd:complexContent>
+	      			<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="blueprintId" type="shortStringType" use="required"/>
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+
+	      <!-- Data Rules Model elements -->
+	      <xsd:element name="dataRuleDefinitionRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+	      		<xsd:complexContent>
+	      			<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="definition" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="nameSpace" type="shortStringType"/>
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+
+	      <xsd:element name="dataRuleSetDefinitionRef" minOccurs="0" maxOccurs="1">
+	      	<xsd:complexType>
+	      		<xsd:complexContent>
+	      			<xsd:extension base="baseAssetRefDef">
+			      		<xsd:attribute name="definition" type="shortStringType" use="required"/>
+			      		<xsd:attribute name="nameSpace" type="shortStringType"/>
+	      			</xsd:extension>
+	      		</xsd:complexContent>
+	      	</xsd:complexType>
+	      </xsd:element>
+
+          <xsd:element name="oslcLinkRef" type="oslcLinkRefDef" minOccurs="0" maxOccurs="1" />
+
+      	  <xsd:element name="collectionRef" type="collectionRefDef" minOccurs="0" maxOccurs="1"/>
+
+	    </xsd:choice>
+    </xsd:sequence>
+
+	<xsd:attribute name="assignmentType" type="shortStringType"/>
+	
+  </xsd:complexType>
+
+  <xsd:simpleType name="longStringType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:maxLength value="8000"/>
+  	</xsd:restriction>
+  </xsd:simpleType>
+  
+   <xsd:simpleType name="mediumStringType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:maxLength value="1000"/>
+  	</xsd:restriction>
+  </xsd:simpleType>
+  
+   <xsd:simpleType name="mediumLongStringType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:maxLength value="2000"/>
+  	</xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="identityType">
+	<xsd:annotation>
+	  	<xsd:documentation>The type is used to define the identity string of a Category or Term, the identity string consists the full path of the item seperated by '::'</xsd:documentation>
+	</xsd:annotation>
+  	<xsd:restriction base="xsd:string">
+  		<xsd:maxLength value="8000"/>
+  	</xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="shortStringType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:maxLength value="255"/>
+  	</xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="languageStringType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:maxLength value="255"/>
+  	</xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="ridType">
+  		<xsd:annotation>
+	  		<xsd:documentation>The type is used to define the Information Server id of a Category or Term, this id is generated by Information Server should not be manually changed</xsd:documentation>
+	    </xsd:annotation>
+  	<xsd:restriction base="xsd:string">
+  		<xsd:maxLength value="64"/>
+  	</xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- ============ ENUMS =========== -->
+  <xsd:simpleType name="statusType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:enumeration value="CANDIDATE"></xsd:enumeration>
+  		<xsd:enumeration value="ACCEPTED"></xsd:enumeration>
+  		<xsd:enumeration value="STANDARD"></xsd:enumeration>
+  		<xsd:enumeration value="DEPRECATED"></xsd:enumeration>
+  	</xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="stewardType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:enumeration value="USER"></xsd:enumeration>
+  		<xsd:enumeration value="USERGROUP"></xsd:enumeration>
+  	</xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="termType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:enumeration value="PRIMARY"></xsd:enumeration>
+  		<xsd:enumeration value="SECONDARY"></xsd:enumeration>
+  		<xsd:enumeration value="NONE"></xsd:enumeration>
+  	</xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="versionType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:enumeration value="1.0">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Business Glossary 8.1.1</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+  		<xsd:enumeration value="1.1">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Business Glossary 8.1.2</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+  		<xsd:enumeration value="1.2">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Business Glossary 8.5</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+  		<xsd:enumeration value="1.3">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Business Glossary 8.7</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+  		<xsd:enumeration value="1.4">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Business Glossary 9.1</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+  		<xsd:enumeration value="1.4.1">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Business Glossary 9.1.1</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+  		<xsd:enumeration value="1.4.2">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Business Glossary 9.1.2</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+  		<xsd:enumeration value="1.4.3">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Business Glossary 9.1.2</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+   		<xsd:enumeration value="1.5">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Governance Catalog 11.3</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+   		<xsd:enumeration value="1.5.1">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Governance Catalog 11.3.1</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+   		<xsd:enumeration value="1.5.2">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Governance Catalog 11.3.1 RU6</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+  			<xsd:enumeration value="1.5.3">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Governance Catalog 11.3.1.2</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+		<xsd:enumeration value="1.5.4">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Governance Catalog 11.3.1.2 RU22</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+  		<xsd:enumeration value="1.6">
+  			<xsd:annotation>
+  				<xsd:documentation>This version was first introduced in InfoSphere Governance Catalog 11.5.1 RUP3</xsd:documentation>
+  			</xsd:annotation>
+  		</xsd:enumeration>
+  	</xsd:restriction>
+  </xsd:simpleType>
+ 
+  <xsd:simpleType name="appliesToType">
+  	<xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="attributeType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:enumeration value="TEXT" />
+  		<xsd:enumeration value="DATE" />
+  		<xsd:enumeration value="BOOLEAN" />
+  		<xsd:enumeration value="NUMBER" />
+  		<xsd:enumeration value="PREDEFINED_VALUES" />
+  		<xsd:enumeration value="REFERENCE" />
+  	</xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="workflowChangeType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:enumeration value="CREATE" />
+  		<xsd:enumeration value="UPDATE" />
+  		<xsd:enumeration value="DELETE" />
+  	</xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="workflowStateType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:enumeration value="DRAFT" />
+  		<xsd:enumeration value="PENDING_APPROVAL" />
+  		<xsd:enumeration value="APPROVED" />
+  	</xsd:restriction>
+  </xsd:simpleType>
+  
+  <xsd:simpleType name="workflowActivityType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:enumeration value="Created" />
+  		<xsd:enumeration value="Sent for approval" />
+  		<xsd:enumeration value="Approved" />
+  		<xsd:enumeration value="Published" />
+  		<xsd:enumeration value="Rejected" />
+  		<xsd:enumeration value="Returned to Draft" />
+  		<xsd:enumeration value="Unknown activity" />
+  	</xsd:restriction>
+  </xsd:simpleType>  
+  <xsd:simpleType name="noteStatusType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:enumeration value="OPEN" />
+  		<xsd:enumeration value="CLOSED" />
+  		<xsd:enumeration value="PENDING" />  		
+  	</xsd:restriction>
+  </xsd:simpleType>
+    <xsd:simpleType name="noteType">
+  	<xsd:restriction base="xsd:string">
+  		<xsd:enumeration value="INFORMATIONAL" />
+  		<xsd:enumeration value="ACTION" />
+  		<xsd:enumeration value="OTHER" />  		
+  	</xsd:restriction>
+  </xsd:simpleType>  
+</xsd:schema>
